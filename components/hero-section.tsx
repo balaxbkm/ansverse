@@ -1,6 +1,7 @@
 "use client"
 
 import { ArrowRight, Box, Circle, Triangle, Layers, Cpu, Code, Globe, Zap, BarChart3, ChevronRight } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
     return (
@@ -17,16 +18,18 @@ export function HeroSection() {
 
             {/* Glassmorphism Floating Icons */}
             <div className="absolute top-[32%] left-[35%] p-3 bg-white/30 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl animate-float-slow hidden lg:block z-0 -rotate-6">
-                <Globe className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
+                <Globe className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
             </div>
             <div className="absolute bottom-32 left-[5%] p-2.5 bg-white/30 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl animate-float-delayed hidden lg:block z-0 rotate-12">
-                <Zap className="w-4 h-4 text-amber-500 dark:text-amber-400" />
+                <Zap className="w-4 h-4 text-blue-500 dark:text-blue-400" />
             </div>
             <div className="absolute top-40 right-[10%] p-3.5 bg-white/30 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl animate-float hidden lg:block z-0 -rotate-12">
                 <Code className="w-6 h-6 text-rose-500 dark:text-rose-400" />
             </div>
             <div className="absolute bottom-40 right-[5%] p-3 bg-white/30 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl animate-float-delayed hidden lg:block z-0 rotate-6">
-                <Layers className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
+                <div className="relative w-5 h-5">
+                    <Image src="/aws-box-logo.png" alt="AWS" fill className="object-contain dark:invert" />
+                </div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
@@ -41,7 +44,7 @@ export function HeroSection() {
                         <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">Ansverse</span>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-zinc-900 dark:text-white leading-[0.95] tracking-tighter mb-8">
+                    <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-black text-zinc-900 dark:text-white leading-[0.95] tracking-tighter mb-8">
                         DIGITAL <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-orange-600 dark:from-rose-400 dark:to-orange-400">ALCHEMY</span>
                     </h1>

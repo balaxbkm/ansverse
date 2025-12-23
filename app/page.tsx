@@ -20,8 +20,8 @@ export default function Home() {
             <div className="relative w-8 h-8 rounded-full overflow-hidden">
               <Image src="/logo.jpg" alt="Ansverse Logo" fill className="object-cover" />
             </div>
-            <div className="relative w-32 h-6">
-              <Image src="/ansverse-text.png" alt="Ansverse" fill className="object-contain object-left brightness-0 dark:invert" />
+            <div className="relative w-28 h-5.5">
+              <Image src="/ansverse-text.png" alt="Ansverse" fill className="object-contain object-left brightness-0 dark:invert opacity-80" />
             </div>
           </div>
 
@@ -41,21 +41,21 @@ export default function Home() {
             <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center md:justify-between items-center gap-px md:gap-12 bg-zinc-200 dark:bg-zinc-800 md:bg-transparent md:dark:bg-transparent border border-zinc-200 dark:border-zinc-800 md:border-0 rounded-2xl md:rounded-none overflow-hidden">
               {[
                 { name: "Vercel", slug: "vercel" },
-                { name: "AWS", slug: "amazonaws" },
+                { name: "AWS", slug: "amazonaws", customIcon: "/aws-tech-logo.png" },
                 { name: "Google Cloud", slug: "googlecloud" },
                 { name: "Stripe", slug: "stripe" },
                 { name: "Docker", slug: "docker" },
                 { name: "GitHub", slug: "github" },
                 { name: "OpenAI", slug: "openai" },
-              ].map((tech) => (
+              ].map((tech: any) => (
                 <div
                   key={tech.name}
                   className={`flex items-center gap-2.5 justify-center bg-white dark:bg-zinc-950 md:bg-transparent md:dark:bg-transparent p-6 md:p-0 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 md:hover:bg-transparent md:dark:hover:bg-transparent ${tech.name === 'Google Cloud' ? 'col-span-2' : ''}`}
                 >
                   <img
-                    src={`https://cdn.simpleicons.org/${tech.slug}`}
+                    src={tech.customIcon || `https://cdn.simpleicons.org/${tech.slug}`}
                     alt={tech.name}
-                    className="w-6 h-6 dark:invert"
+                    className={`w-6 h-6 ${tech.customIcon ? '' : 'dark:invert'}`}
                   />
                   <span className="text-lg font-bold text-zinc-800 dark:text-zinc-200">{tech.name}</span>
                 </div>
