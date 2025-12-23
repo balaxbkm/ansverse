@@ -6,6 +6,7 @@ import { FooterCTA } from "@/components/footer-cta";
 import { ValuesSection } from "@/components/values-section";
 import { MissionSection } from "@/components/mission-section";
 import { HeroSection } from "@/components/hero-section";
+import { CurrentTime } from "@/components/current-time";
 
 
 export default function Home() {
@@ -26,21 +27,40 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             <ThemeToggle />
-
           </div>
         </div>
       </nav>
 
-      <main className="pt-32">
+      <main>
         {/* Hero Section */}
         <HeroSection />
 
         {/* Logos Strip */}
-        <section className="border-y border-zinc-100 dark:border-zinc-800 py-12 bg-zinc-50/50 dark:bg-zinc-900/20 mb-32">
-          <div className="container mx-auto px-6 flex justify-between items-center opacity-40 grayscale overflow-hidden dark:invert">
-            {["Vercel", "AWS", "Google Cloud", "Stripe", "Docker"].map((logo) => (
-              <span key={logo} className="text-xl font-bold dark:text-white">{logo}</span>
-            ))}
+        <section className="border-b border-zinc-100 dark:border-zinc-800 py-10 bg-zinc-50/50 dark:bg-zinc-900/20 mb-20">
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center md:justify-between items-center gap-px md:gap-12 bg-zinc-200 dark:bg-zinc-800 md:bg-transparent md:dark:bg-transparent border border-zinc-200 dark:border-zinc-800 md:border-0 rounded-2xl md:rounded-none overflow-hidden">
+              {[
+                { name: "Vercel", slug: "vercel" },
+                { name: "AWS", slug: "amazonaws" },
+                { name: "Google Cloud", slug: "googlecloud" },
+                { name: "Stripe", slug: "stripe" },
+                { name: "Docker", slug: "docker" },
+                { name: "GitHub", slug: "github" },
+                { name: "OpenAI", slug: "openai" },
+              ].map((tech) => (
+                <div
+                  key={tech.name}
+                  className={`flex items-center gap-2.5 justify-center bg-white dark:bg-zinc-950 md:bg-transparent md:dark:bg-transparent p-6 md:p-0 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 hover:bg-zinc-50 dark:hover:bg-zinc-900 md:hover:bg-transparent md:dark:hover:bg-transparent ${tech.name === 'Google Cloud' ? 'col-span-2' : ''}`}
+                >
+                  <img
+                    src={`https://cdn.simpleicons.org/${tech.slug}`}
+                    alt={tech.name}
+                    className="w-6 h-6 dark:invert"
+                  />
+                  <span className="text-lg font-bold text-zinc-800 dark:text-zinc-200">{tech.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -61,30 +81,23 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="container mx-auto px-6 py-12 border-t border-zinc-100 dark:border-zinc-800">
-        <div className="flex flex-col md:flex-row justify-between gap-12 text-sm text-zinc-500 dark:text-zinc-400">
-          <div className="relative">
-            <div className="relative w-48 h-12 mb-2 transition-transform hover:scale-105 duration-300 origin-left opacity-70 hover:opacity-100">
-              <Image src="/ansverse-text.png" alt="Ansverse" fill className="object-contain object-left brightness-0 dark:invert" />
+        <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-between gap-2 md:gap-0 text-sm text-zinc-500 dark:text-zinc-400">
+          {/* Left Group (Desktop: Left aligned, Mobile: Centered top) */}
+          <div className="flex flex-col items-center md:items-start gap-4">
+            <div className="relative w-56 h-14 mb-2 transition-transform hover:scale-105 duration-300">
+              <Image src="/ansverse-logo-pink.png" alt="Ansverse" fill className="object-contain object-center md:object-left grayscale brightness-0 dark:invert opacity-70" />
             </div>
 
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-2 font-mono text-sm tracking-tight">
-                <span className="font-bold text-indigo-600 dark:text-indigo-400">Code</span>
-                <span className="text-zinc-300 dark:text-zinc-700 text-[10px]">•</span>
-                <span className="font-bold text-purple-600 dark:text-purple-400">Ship</span>
-                <span className="text-zinc-300 dark:text-zinc-700 text-[10px]">•</span>
-                <span className="font-bold text-rose-600 dark:text-rose-400">Scale</span>
-              </div>
-
-              <p className="text-xs text-zinc-400 font-medium flex items-center gap-2">
-                <span>© 2025 Ansverse Inc.</span>
-                <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
-                <span className="opacity-50">All rights reserved.</span>
-              </p>
-            </div>
+            <p className="hidden md:flex text-xs text-zinc-400 font-medium items-center gap-2">
+              <span>© 2025 Ansverse Inc.</span>
+              <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
+              <span className="opacity-50">All rights reserved.</span>
+            </p>
           </div>
-          <div className="flex flex-col md:items-end">
-            <div className="flex items-center gap-4 mb-4">
+
+          {/* Right Group (Desktop: Right aligned, Mobile: Centered bottom) */}
+          <div className="flex flex-col items-center md:items-end gap-8">
+            <div className="flex items-center gap-4">
               <a href="#" aria-label="Github" className="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-400 hover:text-black hover:border-black dark:hover:text-white dark:hover:border-white transition-all bg-white dark:bg-black/50">
                 <Github className="w-5 h-5" />
               </a>
@@ -97,10 +110,16 @@ export default function Home() {
                 </svg>
               </a>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-              <span className="text-zinc-400 text-xs font-medium">Accepting new projects</span>
+
+            <div className="flex flex-col items-center md:items-end gap-1">
+              <CurrentTime />
             </div>
+
+            <p className="md:hidden text-xs text-zinc-400 font-medium flex items-center gap-2 mt-2">
+              <span>© 2025 Ansverse Inc.</span>
+              <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700"></span>
+              <span className="opacity-50">All rights reserved.</span>
+            </p>
           </div>
         </div>
       </footer>

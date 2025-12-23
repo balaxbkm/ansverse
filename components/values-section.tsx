@@ -42,12 +42,13 @@ export function ValuesSection() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {values.map((item, index) => (
-                    <div key={index} className={`group relative p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden ${item.border}`}>
+                    <div key={index} className={`group relative p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden`}>
                         {/* Gradient Hover Background */}
-                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-br ${item.gradient} transition-opacity duration-500`} />
+                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${item.gradient} transition-opacity duration-500`} />
+                        <div className="absolute inset-0 bg-noise opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
 
                         {/* Icon */}
-                        <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                        <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 ring-1 ring-inset ring-black/5 dark:ring-white/10`}>
                             <item.icon className="w-7 h-7 text-slate-900 dark:text-white" />
                         </div>
 
@@ -58,7 +59,7 @@ export function ValuesSection() {
                         </p>
 
                         {/* Arrow */}
-                        <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white group-hover:gap-3 transition-all">
+                        <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white group-hover:gap-3 transition-all pt-4 border-t border-zinc-100 dark:border-zinc-800/50">
                             <span>Learn more</span>
                             <ArrowUpRight className="w-4 h-4" />
                         </div>

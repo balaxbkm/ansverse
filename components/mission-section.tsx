@@ -24,31 +24,81 @@ export function MissionSection() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
                 {/* Visual Card 1: Modern Stack (Dark Theme) */}
-                <div className="md:col-span-5 relative group overflow-hidden rounded-[2.5rem] bg-[#0F1115] p-10 min-h-[400px] flex flex-col justify-between border border-white/5">
-                    {/* Background Grid */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] opacity-50" />
+                <div className="md:col-span-5 relative group overflow-hidden rounded-[2.5rem] bg-[#0F1115] min-h-[450px] flex flex-col border border-white/5">
+                    {/* Dynamic Background */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] opacity-30" />
 
-                    {/* Radial sheen */}
-                    <div className="absolute -top-20 -right-20 w-64 h-64 bg-red-600/20 blur-[80px] rounded-full group-hover:bg-red-600/30 transition-all duration-700" />
-
-                    <div className="relative z-10">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center mb-6 shadow-lg shadow-red-500/20">
-                            <Cpu className="w-6 h-6 text-white" />
-                        </div>
-                        <h3 className="text-3xl font-bold text-white mb-2">Modern Stack</h3>
-                        <p className="text-zinc-400 text-sm">Next.js, React, Node, Edge.</p>
+                    {/* Code Pattern Background */}
+                    <div className="absolute inset-0 opacity-10 font-mono text-[10px] text-zinc-500 p-8 leading-relaxed select-none overflow-hidden pointer-events-none">
+                        {`import { NextApiRequest } from 'next';\nexport default function handler(req, res) {\n  const { method } = req;\n  if (method === 'POST') {\n    // Stream response\n    return new Response(stream, {\n      headers: { 'Content-Type': 'text/event-stream' }\n    });\n  }\n}`}
                     </div>
 
-                    {/* Animated Graph Visual */}
-                    <div className="relative z-10 mt-8 h-32 flex items-end gap-2">
-                        {[40, 70, 45, 90, 60, 85, 100].map((height, i) => (
-                            <div key={i} className="flex-1 bg-zinc-800 rounded-t-lg overflow-hidden relative group-hover:bg-zinc-700 transition-colors">
-                                <div
-                                    className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-red-600 to-orange-500 transition-all duration-1000 ease-out"
-                                    style={{ height: `${height}%`, opacity: 0.8 }}
-                                />
+                    {/* Radial sheen */}
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 blur-[120px] rounded-full pointer-events-none" />
+
+                    {/* Content */}
+                    <div className="relative z-10 p-10 flex flex-col h-full">
+                        <div className="mb-auto">
+                            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center mb-6 shadow-lg shadow-red-500/20 group-hover:scale-110 transition-transform duration-500 ring-1 ring-white/20">
+                                <Cpu className="w-7 h-7 text-white" />
                             </div>
-                        ))}
+                            <h3 className="text-3xl font-bold text-white mb-3 tracking-tight">Modern Stack</h3>
+                            <p className="text-zinc-400 text-sm font-medium">Next.js 14, React Server Components, Edge Runtime.</p>
+                        </div>
+
+                        {/* Interactive Visual Area */}
+                        <div className="relative h-48 mt-8 perspective-1000">
+
+                            {/* Floating Tech Orbits */}
+                            <div className="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center pointer-events-none">
+                                <div className="absolute w-[200px] h-[200px] border border-white/5 rounded-full animate-[spin_20s_linear_infinite]" />
+                                <div className="absolute w-[140px] h-[140px] border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+                            </div>
+
+                            {/* Floating Badges */}
+                            <div className="absolute top-4 right-4 z-20 animate-float-delayed">
+                                <span className="px-3 py-1.5 bg-zinc-900/90 backdrop-blur-md rounded-lg text-xs font-mono text-zinc-300 border border-white/10 shadow-xl flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-[#61DAFB]"></span>React
+                                </span>
+                            </div>
+                            <div className="absolute top-10 left-0 z-20 animate-float">
+                                <span className="px-3 py-1.5 bg-zinc-900/90 backdrop-blur-md rounded-lg text-xs font-mono text-zinc-300 border border-white/10 shadow-xl flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-white"></span>Next.js
+                                </span>
+                            </div>
+                            <div className="absolute bottom-12 right-10 z-20 animate-float-delayed" style={{ animationDelay: '1s' }}>
+                                <span className="px-3 py-1.5 bg-zinc-900/90 backdrop-blur-md rounded-lg text-xs font-mono text-zinc-300 border border-white/10 shadow-xl flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-[#3178C6]"></span>TS
+                                </span>
+                            </div>
+
+                            {/* Main Terminal Window - Centered & Larger */}
+                            <div className="absolute bottom-0 left-1 right-1 h-32 bg-[#1e1e1e] rounded-t-xl border border-white/10 shadow-2xl overflow-hidden group-hover:translate-y-[-10px] transition-transform duration-500">
+                                {/* Terminal Header */}
+                                <div className="h-8 bg-white/5 flex items-center px-4 gap-2 border-b border-white/5">
+                                    <div className="flex gap-1.5">
+                                        <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
+                                    </div>
+                                    <div className="text-[10px] text-zinc-500 ml-2 font-mono flex-1 text-center">server.ts</div>
+                                </div>
+                                {/* Terminal Body */}
+                                <div className="p-4 font-mono text-[11px] leading-relaxed text-zinc-300">
+                                    <div className="flex items-center gap-2 text-zinc-500 mb-1">
+                                        <span>$</span>
+                                        <span className="text-white">bun install</span>
+                                    </div>
+                                    <div className="text-emerald-500">✔ Packages installed</div>
+                                    <div className="flex items-center gap-2 mt-2">
+                                        <span className="text-zinc-500">$</span>
+                                        <span className="animate-pulse">_</span>
+                                    </div>
+                                </div>
+                                {/* Glow Line */}
+                                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 opacity-50"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
